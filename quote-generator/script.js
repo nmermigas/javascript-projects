@@ -7,23 +7,19 @@ const loader = document.getElementById('loader')
 
 let apiQuotes = [];
 
-
-
-//Show Loading
-
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
+
 //  Show New Quote
 function newQuote() {
-    loading();
+    showLoadingSpinner();
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
     if (!quote.author) {
@@ -39,7 +35,7 @@ function newQuote() {
     }
     //Set Quote, Hide Loader
     quoteText.textContent = quote.text;
-    complete();
+    removeLoadingSpinner();
 }
 
 // Get Quotes From API
@@ -61,7 +57,6 @@ function tweetQuote() {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} -${authorText.textContent}`;
     window.open(twitterUrl,'_blank')
 }
-
 
 // Event Listeners
 newQuoteBtn.addEventListener('click',newQuote)
