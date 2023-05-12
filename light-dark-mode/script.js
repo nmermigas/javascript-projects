@@ -25,7 +25,6 @@ function toggleDarkLightMode(isDark) {
     isDark ? imageMode(DARK_THEME) : imageMode(LIGHT_THEME);
 
 }
-
 // Switch Theme
 function switchTheme(event) {
     if(event.target.checked) {
@@ -35,7 +34,6 @@ function switchTheme(event) {
     } else {
         document.documentElement.setAttribute('data-theme','light')
         localStorage.setItem('theme', LIGHT_THEME);
-
         toggleDarkLightMode(false);
     }
 }
